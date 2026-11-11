@@ -48,7 +48,7 @@ background-color: rgb(220, 220, 220);
 border-left-color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>BACKWARD</string>
+        <string>&lt;---------------------------------------------------</string>
        </property>
       </widget>
      </item>
@@ -60,7 +60,7 @@ background-color: rgb(220, 220, 220);
 border-left-color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>FORWARD</string>
+        <string>---------------------------------------------------&gt;</string>
        </property>
       </widget>
      </item>
@@ -70,9 +70,9 @@ border-left-color: rgb(0, 0, 0);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>840</y>
+      <y>880</y>
       <width>1661</width>
-      <height>221</height>
+      <height>181</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">

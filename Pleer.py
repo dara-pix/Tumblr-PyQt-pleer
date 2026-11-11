@@ -92,7 +92,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("Deceptacon")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r'Le_Tigre_-_Deceptacon_48052957.mp3')))
+                r'music\Le_Tigre_-_Deceptacon_48052957.mp3')))
         self.player.play()
         self.allhide()
         self.decaptacon.show()
@@ -102,7 +102,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("Dance Motherfucker")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Scum_of_the_Earth_-_Dance_Motherfucker_71559688.mp3")))
+                r"music\Scum_of_the_Earth_-_Dance_Motherfucker_71559688.mp3")))
         self.player.play()
         self.allhide()
         self.dancem.show()
@@ -112,7 +112,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("Bad Guy")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Billie_Eilish_-_bad_guy_63154737.mp3")))
+                r"music\Billie_Eilish_-_bad_guy_63154737.mp3")))
         self.player.play()
         self.allhide()
         self.badg.show()
@@ -122,7 +122,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("Crucified")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Army Of Lovers - Crucified.mp3")))
+                r"music\Army_Of_Lovers_-_Crucified_47995620.mp3")))
         self.player.play()
         self.allhide()
         self.cr.show()
@@ -132,7 +132,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("Get It Up")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Mindless_Self_Indulgence_-_Get_It_Up_64292243.mp3")))
+                r"music\Mindless_Self_Indulgence_-_Get_It_Up_64292243.mp3")))
         self.player.play()
         self.allhide()
         self.iff.show()
@@ -142,7 +142,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("7 rings")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Ariana_Grande_-_7_rings_61522389.mp3")))
+                r"music\Ariana_Grande_-_7_rings_61522389.mp3")))
         self.player.play()
         self.allhide()
         self.rrin.show()
@@ -152,7 +152,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("She Burned Me Down")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Type_O_Negative_-_She_Burned_Me_Down_73200420.mp3")))
+                r"music\Type_O_Negative_-_She_Burned_Me_Down_73200420.mp3")))
         self.player.play()
         self.allhide()
         self.sshe.show()
@@ -162,7 +162,7 @@ class App(QMainWindow, QWidget):
         self.song.setText("Teenagers")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"My_Chemical_Romance_-_Teenagers_48131445.mp3")))
+                r"music\My_Chemical_Romance_-_Teenagers_48131445.mp3")))
         self.player.play()
         self.allhide()
         self.abr.show()
@@ -172,28 +172,26 @@ class App(QMainWindow, QWidget):
         self.song.setText("Oh No!")
         self.player.setMedia(
             QMediaContent(QUrl.fromLocalFile(
-                r"Marina_And_The_Diamonds_-_Oh_No_48228200.mp3")))
+                r"music\Marina_And_The_Diamonds_-_Oh_No_48228200.mp3")))
         self.player.play()
         self.allhide()
         self.ohno.show()
 
     def forwrar(self):
-        k = self.c + 1
-        if self.c != 8:
-            self.forward.clicked.connect(self.s[k])
-            self.c = k
+        if self.c < len(self.s) - 1:
+            self.c += 1
         else:
-            self.forward.clicked.connect(self.s[0])
             self.c = 0
 
+        self.s[self.c]()
+
     def backwar(self):
-        k = self.c - 1
-        if self.c != 0:
-            self.backward.clicked.connect(self.s[k])
-            self.c = k
+        if self.c > 0:
+            self.c -= 1
         else:
-            self.backward.clicked.connect(self.s[8])
-            self.c = 8
+            self.c = len(self.s) - 1
+
+        self.s[self.c]()
 
     def playMedia(self):
         self.player.play()
@@ -224,7 +222,7 @@ class App(QMainWindow, QWidget):
 
     def randomMedia(self):
         r = random.choice(self.s)
-        self.random.clicked.connect(r)
+        r()
 
     def set_position(self, position):
         self.player.setPosition(position)
